@@ -1,34 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import client from './api/client';
-
-
-
-let responseLogger = function (data, response) {
-  // console.log(data)
-  // console.log(response)
-}
-
-// let recordBlogPosts = function (data, response){
-//   state.blogPosts = response
-// }
-
-// client.methods.getBlogPosts(recordBlogPosts);
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Toast from 'react-bootstrap/Toast';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Blog />
-      </header>
-    </div>
+    <Container className="p-3">
+      <div className="row">
+        <Jumbotron className="text-center, col-md-12">
+          <h1 className="header">Tunit's Mega Dragonball Z Blog</h1>
+          <p>
+            It's proper sick and that. Trust me just give it a read. Also, have you heard any liquid drum and bass,
+            honestly I reckon you'll like this track.
+          </p>
+        </Jumbotron></div>
+      <Blog/>
+    </Container>
   );
 }
 
 function Post(post, key) {
-  return (<li key={key}>{post.post.Content}</li>)
+  return (
+
+    <div>
+      <div>
+        <h2>{ post.post.Title }</h2>
+      </div>
+      <div className="text-justify">
+        { post.post.Content }
+      </div>
+    </div>
+  )
 }
 
 class Blog extends React.Component {
@@ -57,9 +64,16 @@ class Blog extends React.Component {
 
   render() {
     return (
-      <ul>
-        {this.state.posts.map((value) => {return <Post post={value} key={value.id}/>})}
-      </ul>
+      <div className="row">
+        <div className="col-md-8">
+          { this.state.posts.map((value) => {
+            return <Post post={ value } key={ value.id }/>
+          }) }
+        </div>
+        <div className="col-md-4">
+          Sidebar
+        </div>
+      </div>
     )
   }
 }
