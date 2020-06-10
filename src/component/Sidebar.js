@@ -3,6 +3,13 @@ import '../App.css';
 import client from '../api/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+function Link(link, key) {
+    return (
+      <li><a href={link.link.url}>{ link.link.Name }</a></li>
+    )
+  }
+
 class Sidebar extends React.Component {
     constructor(props) {
         super(props);
@@ -13,11 +20,12 @@ class Sidebar extends React.Component {
     }
 
     recordContactInformation(data, response) {
-        this.setState({ bio: this.state.bio, contactInformation: data });
+        this.setState((state, props) => ({ contactInformation: data }));
+        console.log(data)
     }
 
     recordBio(data, response) {
-        this.setState({ bio: data, contactInformation: this.state.contactInformation });
+        this.setState((state, props) => ({ bio: data }));
     }
 
     componentDidMount() {
@@ -26,9 +34,27 @@ class Sidebar extends React.Component {
     }
 
     render() {
+        // debugger
         return (
             <div className="col-md-4">
-                { this.state.bio && this.state.bio.Content }
+                <h3>About Me</h3>
+                <p>
+                    { this.state.bio && this.state.bio.Content }
+                </p>
+                <h3>Contact Information</h3>
+                <ul>
+                    <li>{ this.state.contactInformation && this.state.contactInformation.Email }</li>
+                    <li>{ this.state.contactInformation && this.state.contactInformation.Phone }</li>
+                </ul>
+                <h3>Links</h3>
+                <ul>
+                    { this.state.contactInformation && 
+                        this.state.contactInformation.links.map((value) => {
+                                return <Link link={ value } key={ value.Name } />
+                            }
+                        )
+                    }
+                </ul>
             </div>
         )
     }
