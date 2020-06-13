@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../App.css';
 import client from '../api/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-function Link(link, key) {
+function Link(props) {
     return (
-      <li><a href={link.link.url}>{ link.link.Name }</a></li>
+      <li><a href={ props.link.url }>{ props.link.Name }</a></li>
     )
   }
 
@@ -20,12 +20,11 @@ class Sidebar extends React.Component {
     }
 
     recordContactInformation(data, response) {
-        this.setState((state, props) => ({ contactInformation: data }));
-        console.log(data)
+        this.setState({ contactInformation: data });
     }
 
     recordBio(data, response) {
-        this.setState((state, props) => ({ bio: data }));
+        this.setState({ bio: data });
     }
 
     componentDidMount() {
@@ -34,7 +33,6 @@ class Sidebar extends React.Component {
     }
 
     render() {
-        // debugger
         return (
             <div className="col-md-4">
                 <h3>About Me</h3>
@@ -48,7 +46,7 @@ class Sidebar extends React.Component {
                 </ul>
                 <h3>Links</h3>
                 <ul>
-                    { this.state.contactInformation && 
+                    { this.state.contactInformation &&
                         this.state.contactInformation.links.map((value) => {
                                 return <Link link={ value } key={ value.Name } />
                             }

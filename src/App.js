@@ -1,30 +1,59 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import client from './api/client';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import Toast from 'react-bootstrap/Toast';
 import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Blog from './component/Blog.js'
-import Post from './component/Post.js'
+import Feed from './component/Feed.js';
+import {
+    Switch,
+    Route,
+    useParams
+} from "react-router-dom";
+import Post from "./component/Post";
+import Sidebar from "./component/Sidebar";
 
+function Header() {
+    return (
+        <div className="row">
+            <Jumbotron className="text-center, col-md-12">
+                <h1 className="header">Tunit's Mega Dragonball Z Blog</h1>
+                <p>
+                    It's proper sick and that. Trust me just give it a read. Also, have you heard any liquid drum
+                    and bass,
+                    honestly I reckon you'll like this track.
+                </p>
+            </Jumbotron>
+        </div>
+    );
+}
 
 function App() {
-  return (
-    <Container className="p-3">
-      <div className="row">
-        <Jumbotron className="text-center, col-md-12">
-          <h1 className="header">Tunit's Mega Dragonball Z Blog</h1>
-          <p>
-            It's proper sick and that. Trust me just give it a read. Also, have you heard any liquid drum and bass,
-            honestly I reckon you'll like this track.
-          </p>
-        </Jumbotron></div>
-      <Blog/>
-    </Container>
-  );
+    return (
+        <Container className="p-3">
+            <Header/>
+            <div className="row">
+                <div className="col-md-8">
+                    <Switch>
+                        <Route path="/posts/:postId">
+                            <PostView/>
+                        </Route>
+                        <Route path="/">
+                            <Feed/>
+                        </Route>
+                    </Switch>
+                </div>
+                <Sidebar/>
+            </div>
+        </Container>
+    );
 }
+
+function PostView() {
+    let { postId } = useParams()
+    return (
+        <Post postId={ postId }/>
+    )
+}
+
 
 export default App;
