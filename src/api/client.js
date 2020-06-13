@@ -1,9 +1,11 @@
+import { config } from '../Constants'
+
 var Client = require('node-rest-client').Client;
 
 var client = new Client();
 
-client.registerMethod("getBlogPosts", "https://shrouded-reaches-27000.herokuapp.com/blog-posts", "GET");
-client.registerMethod("getBio", "https://shrouded-reaches-27000.herokuapp.com/bio", "GET")
-client.registerMethod("getContactInformation", "https://shrouded-reaches-27000.herokuapp.com/contact-information", "GET")
+client.registerMethod("getBlogPosts", config.url.API_URL_BLOGPOSTS, "GET");
+client.registerMethod("getBio", config.url.API_URL_BIO, "GET")
+client.registerMethod("getContactInformation", config.url.API_URL_CONTACTINFORMATION, "GET")
 
 export default client;
