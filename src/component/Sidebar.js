@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Link(props) {
     return (
-      <li><a href={props.link.url}>{ props.link.Name }</a></li>
+      <li><a href={ props.link.url }>{ props.link.Name }</a></li>
     )
   }
 
