@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Wireframes
+The UI wireframes for this project can be found at
+
+https://www.figma.com/file/a0rZuUGI2OdBoCsrkDOLxC/tunit-blog?node-id=0%3A1
+
 ## Available Scripts
 
 In the project directory, you can run:
