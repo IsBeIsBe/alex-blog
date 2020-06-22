@@ -2,11 +2,12 @@ import React from 'react';
 import '../App.css';
 import client from '../api/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from "react-router-dom";
 
 
-function Link(props) {
+function MenuItem(props) {
     return (
-        <li><a href={ props.link.url }>{ props.link.Name }</a></li>
+        <Link to={props.url} className="nav-link active">{props.title}</Link>
     )
 }
 
@@ -14,25 +15,20 @@ class Sidebar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            contactInformation: null,
-            bio: null
+            topics: []
         }
     }
 
-    recordContactInformation(data, response) {
-        this.setState({ contactInformation: data });
-    }
-
-    recordBio(data, response) {
-        this.setState({ bio: data });
+    recordTopics(data, response) {
+        this.setState({ topics: data });
     }
 
     componentDidMount() {
-        client.methods.getContactInformation(this.recordContactInformation.bind(this));
-        client.methods.getBio(this.recordBio.bind(this));
+        client.methods.getTopics(this.recordTopics.bind(this))
     }
 
     render() {
+        console.log(this.state)
         return (
             <div className="nav flex-column position-fixed">
                 <div className="row my-5"></div>
@@ -40,8 +36,13 @@ class Sidebar extends React.Component {
                 <div className="row">
                     <div className="col-md-2"></div>
                     <nav className="col-md-12">
-                        <a className="nav-link active" href="#">Blog</a>
-                        <a className="nav-link disabled" href="#">Disabled</a>
+                        <MenuItem url="/" title="Home" />
+                        {
+                            this.state.topics.map((value) => {
+                                return <MenuItem url="#" title={value.Title} key={value.id}/>
+                            })
+                        }
+                        <MenuItem url="/blog" title="Blog" />
                     </nav>
                 </div>
             </div>

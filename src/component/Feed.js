@@ -49,7 +49,7 @@ class Feed extends React.Component {
         this.setState({ posts: data });
     }
 
-        componentDidMount() {
+    componentDidMount() {
         client.methods.getBlogPosts(this.recordBlogPosts.bind(this));
     }
 
