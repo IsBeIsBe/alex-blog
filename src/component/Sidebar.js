@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function MenuItem(props) {
     return (
-        <Link to={props.url} className="nav-link active">{props.title}</Link>
+        <Link to={ props.url } className="nav-link active">{ props.title }</Link>
     )
 }
 
@@ -38,7 +38,7 @@ class Sidebar extends React.Component {
                         <MenuItem url="/" title="Home" />
                         {
                             this.state.topics.map((value) => {
-                                return <MenuItem url="#" title={value.Title} key={value.id}/>
+                                return <MenuItem url="#" title={ value.Title } key={ value.id }/>
                             })
                         }
                         <MenuItem url="/blog" title="Blog" />
