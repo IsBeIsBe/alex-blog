@@ -7,14 +7,14 @@ import Feed from './component/Feed.js';
 import {
     Switch,
     Route,
-    useParams
+    useParams, HashRouter as Router
 } from "react-router-dom";
 import Post from "./component/Post";
 import Sidebar from "./component/Sidebar";
 
 function Header() {
     return (
-        <div className="row">
+        <div className="row text-center">
             <Jumbotron className="text-center, col-md-12">
                 <h1 className="header">Tunit's Mega Dragonball Z Blog</h1>
                 <p>
@@ -29,22 +29,28 @@ function Header() {
 
 function App() {
     return (
-        <Container className="p-3">
-            <Header/>
+        <Router>
             <div className="row">
-                <div className="col-md-8">
-                    <Switch>
-                        <Route path="/posts/:postId">
-                            <PostView/>
-                        </Route>
-                        <Route path="/">
-                            <Feed/>
-                        </Route>
-                    </Switch>
+                <div className="col-md-1 border-right">
+                    <Sidebar/>
                 </div>
-                <Sidebar/>
+                <div className="col-md-11">
+                    <Header/>
+                    <div className="row">
+                        <Container>
+                            <Switch>
+                                <Route path="/posts/:postId">
+                                    <PostView/>
+                                </Route>
+                                <Route path="/">
+                                    <Feed/>
+                                </Route>
+                            </Switch>
+                        </Container>
+                    </div>
+                </div>
             </div>
-        </Container>
+        </Router>
     );
 }
 
