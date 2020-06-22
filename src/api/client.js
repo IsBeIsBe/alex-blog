@@ -8,6 +8,6 @@ client.registerMethod("getHomepage", config.API_URL + config.paths.HOMEPAGE, "GE
 client.registerMethod("getBlogPosts", config.API_URL + config.paths.BLOGPOSTS, "GET");
 client.registerMethod("getBlogPost", config.API_URL + config.paths.BLOGPOSTS + "/${postId}", "GET")
 client.registerMethod("getBio", config.API_URL + config.paths.BIO, "GET")
-client.registerMethod("getTopics", config.API_URL + config.paths.TOPIC, "GET")
+client.registerMethod("getTopics", config.API_URL + config.paths.TOPICS, "GET")
 
 export default client;

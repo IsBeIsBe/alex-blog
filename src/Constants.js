@@ -4,7 +4,7 @@ let config = {
         BLOGPOSTS: "blog-posts",
         BIO: "bio",
         CONTACT_INFORMATION: "contact-information",
-        TOPIC: "topics",
+        TOPICS: "topics",
     }    
 }
 
