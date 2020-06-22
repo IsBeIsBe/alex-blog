@@ -28,7 +28,6 @@ class Sidebar extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <div className="nav flex-column position-fixed">
                 <div className="row my-5"></div>
