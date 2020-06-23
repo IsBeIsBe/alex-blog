@@ -12,7 +12,6 @@ class Homepage extends React.Component {
     }
 
     retrieveHomepage(data, response) {
-        console.log(data)
         this.setState({ content: data.Content })
     }
 
