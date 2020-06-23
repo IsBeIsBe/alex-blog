@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button'
 
 function MenuItem(props) {
     let subtopics = props.subtopics;
-    console.log(subtopics)
+    
     return (
         subtopics ?
             <GroupMenuItem title={props.title} subtopics={subtopics} /> :
@@ -74,7 +74,6 @@ class Sidebar extends React.Component {
                         <MenuItem url="/" title="Home" />
                         {
                             this.state.topics.map((value) => {
-                                console.log(value)
                                 return <MenuItem url="#" title={value.Title} key={value.id} subtopics={value.subtopics} />
                             })
                         }
