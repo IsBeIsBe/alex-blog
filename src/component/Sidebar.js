@@ -3,11 +3,47 @@ import '../App.css';
 import client from '../api/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
-
+import Accordion from 'react-bootstrap/Accordion'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
 function MenuItem(props) {
+    let subtopics = props.subtopics;
+    console.log(subtopics)
     return (
-        <Link to={ props.url } className="nav-link active">{ props.title }</Link>
+        subtopics ?
+            <GroupMenuItem title={props.title} subtopics={subtopics} /> :
+            <SingleMenuItem title={props.title} url={props.url} />
+    )
+}
+
+function SingleMenuItem(props) {
+    return (
+        <Link to={props.url} className="nav-link active">{props.title}</Link>
+    )
+}
+
+function GroupMenuItem(props) {
+    return (
+
+        <Accordion>
+            <div>
+                <div>
+                    <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                        {props.title}
+                    </Accordion.Toggle>
+                </div>
+                <Accordion.Collapse eventKey="0">
+                    <div>
+                        {
+                            props.subtopics.map((value) => {
+                                return <SingleMenuItem url="#" title={value.Title} key={value.id} />
+                            })
+                        }
+                    </div>
+                </Accordion.Collapse>
+            </div>
+        </Accordion>
     )
 }
 
@@ -38,7 +74,8 @@ class Sidebar extends React.Component {
                         <MenuItem url="/" title="Home" />
                         {
                             this.state.topics.map((value) => {
-                                return <MenuItem url="#" title={ value.Title } key={ value.id }/>
+                                console.log(value)
+                                return <MenuItem url="#" title={value.Title} key={value.id} subtopics={value.subtopics} />
                             })
                         }
                         <MenuItem url="/blog" title="Blog" />
