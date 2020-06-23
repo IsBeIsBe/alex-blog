@@ -4,7 +4,6 @@ import client from '../api/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 import Accordion from 'react-bootstrap/Accordion'
-import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
 function MenuItem(props) {
