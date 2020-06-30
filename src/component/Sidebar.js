@@ -29,30 +29,6 @@ function GroupMenuItem(props) {
             <div>
                 <div>
                     <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                        {props.title}
-                    </Accordion.Toggle>
-                </div>
-                <Accordion.Collapse eventKey="0">
-                    <div>
-                        {
-                            props.subtopics.map((value) => {
-                                return <SingleMenuItem url="#" title={value.Title} key={value.id} />
-                            })
-                        }
-                    </div>
-                </Accordion.Collapse>
-            </div>
-        </Accordion>
-    )
-}
-
-function GroupMenuItem(props) {
-    return (
-
-        <Accordion>
-            <div>
-                <div>
-                    <Accordion.Toggle as={Button} variant="link" eventKey="0">
                         { props.title }
                     </Accordion.Toggle>
                 </div>
