@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import Post from "./component/Post";
 import Sidebar from "./component/Sidebar";
+import Homepage from "./component/Homepage";
 
 function Header() {
     return (
@@ -42,8 +43,11 @@ function App() {
                                 <Route path="/posts/:postId">
                                     <PostView/>
                                 </Route>
-                                <Route path="/">
+                                <Route path="/blog">
                                     <Feed/>
+                                </Route>
+                                <Route path="/">
+                                    <Homepage/>
                                 </Route>
                             </Switch>
                         </Container>
