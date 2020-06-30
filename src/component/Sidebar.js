@@ -11,14 +11,14 @@ function MenuItem(props) {
     
     return (
         subtopics ?
-            <GroupMenuItem title={props.title} subtopics={subtopics} /> :
-            <SingleMenuItem title={props.title} url={props.url} />
+            <GroupMenuItem title={ props.title } subtopics={ subtopics } /> :
+            <SingleMenuItem title={ props.title } url={ props.url } />
     )
 }
 
 function SingleMenuItem(props) {
     return (
-        <Link to={props.url} className="nav-link active">{props.title}</Link>
+        <Link to={ props.url } className="nav-link active">{ props.title }</Link>
     )
 }
 
@@ -29,14 +29,14 @@ function GroupMenuItem(props) {
             <div>
                 <div>
                     <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                        {props.title}
+                        { props.title }
                     </Accordion.Toggle>
                 </div>
                 <Accordion.Collapse eventKey="0">
                     <div>
                         {
                             props.subtopics.map((value) => {
-                                return <SingleMenuItem url="#" title={value.Title} key={value.id} />
+                                return <SingleMenuItem url="#" title={ value.Title } key={ value.id } />
                             })
                         }
                     </div>
@@ -73,7 +73,7 @@ class Sidebar extends React.Component {
                         <MenuItem url="/" title="Home" />
                         {
                             this.state.topics.map((value) => {
-                                return <MenuItem url="#" title={value.Title} key={value.id} subtopics={value.subtopics} />
+                                return <MenuItem url="#" title={ value.Title } key={ value.id } subtopics={ value.subtopics } />
                             })
                         }
                         <MenuItem url="/blog" title="Blog" />
