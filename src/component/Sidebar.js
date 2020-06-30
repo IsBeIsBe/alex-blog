@@ -18,7 +18,31 @@ function MenuItem(props) {
 
 function SingleMenuItem(props) {
     return (
-        <Link to={ props.url } className="nav-link active">{ props.title }</Link>
+        <Link to={props.url} className="nav-link active">{props.title}</Link>
+    )
+}
+
+function GroupMenuItem(props) {
+    return (
+
+        <Accordion>
+            <div>
+                <div>
+                    <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                        {props.title}
+                    </Accordion.Toggle>
+                </div>
+                <Accordion.Collapse eventKey="0">
+                    <div>
+                        {
+                            props.subtopics.map((value) => {
+                                return <SingleMenuItem url="#" title={value.Title} key={value.id} />
+                            })
+                        }
+                    </div>
+                </Accordion.Collapse>
+            </div>
+        </Accordion>
     )
 }
 
